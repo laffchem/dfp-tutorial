@@ -48,7 +48,8 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'accounts',
-    'pages'
+    'pages',
+    'books'
 ]
 
 # crispy forms
