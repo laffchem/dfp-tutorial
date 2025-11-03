@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'crispy_forms',
     'crispy_bootstrap5',
+    'allauth',
+    'allauth.account',
     'accounts',
     'pages'
 ]
@@ -56,6 +58,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "allauth.account.middleware.AccountMiddleware"
 ]
 
 ROOT_URLCONF = 'core.urls'
@@ -137,7 +140,20 @@ STATICFILES_STORAGE = "django.contrib.staticfiles.storage.StaticFielsStorage"
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL = "home"
-LOGOUT_REDIRECT_URL = "home"
+ACCOUNT_LOGOUT_REDIRECT_URL = "home"
 
 
 AUTH_USER_MODEL = "accounts.CustomUser"  
+
+# AllAuth Config
+SITE_ID = 1 # allauth
+AUTHENTICATION_BACKENDS = (
+    "django.contrib.auth.backends.ModelBackend",
+    "allauth.account.auth_backends.AuthenticationBackend"
+)
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend" # Console for Now
+ACCOUNT_SESSION_REMEMBER = True
+ACCOUNT_SIGNUP_FIELDS = ['email*', 'password1*']
+ACCOUNT_LOGIN_METHODS = {'email'}
+ACCOUNT_SIGNUP_FIELDS = ['email*', 'password1*']
+ACCOUNT_UNIQUE_EMAIL = True
