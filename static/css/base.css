@@ -1,0 +1,8 @@
+body {
+    min-height: 75rem;
+}
+
+img.bookcover {
+    height: 300px;
+    width: auto;
+}
