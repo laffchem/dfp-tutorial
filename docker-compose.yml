@@ -9,6 +9,8 @@ services:
       - .:/app
     environment:
       - DB_HOST=db
+      - "DJANGO_SECRET_KEY=ed7bd4b36d45eb2d45c948c886fdab8dfa387111458f1dc84633252e2c474f87"
+      - "DJANGO_DEBUG=True"
     depends_on:
       - db
 
