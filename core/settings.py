@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     'crispy_forms',
     'crispy_bootstrap5',
     'allauth',
@@ -155,3 +156,4 @@ ACCOUNT_SIGNUP_FIELDS = ['email*', 'password1*']
 ACCOUNT_LOGIN_METHODS = {'email'}
 ACCOUNT_SIGNUP_FIELDS = ['email*', 'password1*']
 ACCOUNT_UNIQUE_EMAIL = True
+DEFAULT_FROM_EMAIL = "admin@djangobookstore.com"
