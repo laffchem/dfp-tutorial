@@ -16,6 +16,19 @@ class CustomUserAdmin(UserAdmin):
         "username",
         "is_superuser",
     ]
+    # Remove usable_password from add_fieldsets
+    add_fieldsets = (
+        (
+            None,
+            {
+                "classes": ("wide",),
+                "fields": ("username", "email", "password1", "password2"),
+            },
+        ),
+    )
 
 
+# Unregister allauth's admin if it's registered
+# admin.site.unregister(CustomUser)
+# Register your custom admin
 admin.site.register(CustomUser, CustomUserAdmin)
