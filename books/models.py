@@ -13,6 +13,7 @@ class Book(models.Model):
     cover = models.ImageField(upload_to="covers/", blank=True)
 
     class Meta:
+        indexes = [models.Index(fields=["id"], name="book_id_idx")]
         permissions = [("special_status", "Can read all books")]
 
     def __str__(self):
