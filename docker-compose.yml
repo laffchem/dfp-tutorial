@@ -2,15 +2,15 @@ services:
   web:
     build: .
     ports:
-      - "8000:8000"
+      - '8001:8000'
     # Use the container Python to invoke manage.py so we run the project's code reliably
     command: uv run manage.py runserver 0.0.0.0:8000
     volumes:
       - .:/app
     environment:
       - DB_HOST=db
-      - "DJANGO_SECRET_KEY=ed7bd4b36d45eb2d45c948c886fdab8dfa387111458f1dc84633252e2c474f87"
-      - "DJANGO_DEBUG=True"
+      - 'DJANGO_SECRET_KEY=ed7bd4b36d45eb2d45c948c886fdab8dfa387111458f1dc84633252e2c474f87'
+      - 'DJANGO_DEBUG=True'
     depends_on:
       - db
 
@@ -19,7 +19,7 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql
     environment:
-      - "POSTGRES_HOST_AUTH_METHOD=trust"
+      - 'POSTGRES_HOST_AUTH_METHOD=trust'
 
 volumes:
   postgres_data:
