@@ -20,15 +20,22 @@ from django.conf import settings
 from django.urls import path, include
 from allauth.account.decorators import secure_admin_login
 from django.conf.urls.static import static
+from django.http import HttpResponse
 
 admin.autodiscover()
 admin.site.login = secure_admin_login(admin.site.login)
+
+
+def show_host(request):
+    return HttpResponse(f"HOST={request.get_host()}")
+
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("accounts/", include("allauth.urls")),
     path("", include("pages.urls")),
     path("books/", include("books.urls")),
+    path("__host__", show_host),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:
